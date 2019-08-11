@@ -3,37 +3,29 @@
 #include "Player.hh"
 #include<vector>
 #include<string>
+#include<iomanip>
 
 int main()
 {
+    int gameDays = 5;
+
     Player player1 = *new Player("jose");
     Player player2 = *new Player("alberto");
     Player player3 = *new Player("julio");
     Player player4 = *new Player("andres");
     Player player5 = *new Player("miguel");
+    Player player6 = *new Player("arturo");
 
-    std::vector<Player> playerList {player1, player2, player3, player4, player5};
+    std::vector<Player> playerList1 {player1, player2, player3, player4, player5};
+    std::vector<Player> playerList2 {player1, player2, player3, player4, player5, player6};
 
-    Tournament tournament = *new Tournament(5, playerList);
+    Tournament tournament1 = *new Tournament(gameDays, playerList1);
+    Tournament tournament2 = *new Tournament(gameDays, playerList2);
 
-    std::string topGameLabel = "jugador : ";
-
-    for(int i = 0; i < tournament.getPlayerList().size(); i++)
-    {
-        topGameLabel += "d" + std::to_string(i + 1)  + " \t";
-    }
-    
-    std::cout << topGameLabel << std::endl;
-
-    for(int i = 0; i < tournament.getPlayerList().size(); i++)
-    {
-        std::cout << tournament.getPlayerList()[i].getPlayerName() + "\t" << std::endl;
-    }
-
-    
+    tournament1.createGame();
 
     std::getchar();
     
-    tournament.~Tournament();
+    tournament1.~Tournament();
     return 0;
 }
