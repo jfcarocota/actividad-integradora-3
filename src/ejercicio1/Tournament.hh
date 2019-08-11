@@ -65,6 +65,11 @@ void Tournament::createGame()
             {
                 match.push_back("-\t");
             }
+            //BUG
+            /*else if(gameDays == nplayers)
+            {
+                match.push_back("-\t");
+            }*/
         }
 
         //shuffle

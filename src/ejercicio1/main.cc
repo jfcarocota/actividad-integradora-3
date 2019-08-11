@@ -22,12 +22,11 @@ int main()
     Tournament tournament1 = *new Tournament(gameDays, playerList1);
     Tournament tournament2 = *new Tournament(gameDays, playerList2);
 
-    //tournament1.createGame();
+    tournament1.createGame();
+    std::cout << "************************************************" << std::endl;
     tournament2.createGame();
 
     std::getchar();
     
-    //tournament1.~Tournament();
-    //tournament2.~Tournament();
     return 0;
 }
