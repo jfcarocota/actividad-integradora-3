@@ -7,6 +7,7 @@
 #include<cstdlib>
 #include<algorithm>
 #include<random>
+#include<list>
 
 class Tournament
 {
@@ -43,11 +44,14 @@ int Tournament::getGameDays()
 
 void Tournament::createGame()
 {
-    bool rest = false;
-    std::vector<std::string> match;
-    int nplayers = this->playersList.size();
 
-    for(int i = 0; i < gameDays; i++)
+    std::list<std::string> p;
+
+    std::vector<std::string> match;
+    int nplayers = 0;
+    nplayers = this->playersList.size();
+    
+    for(int i = 0; i < this->gameDays; i++)
     {
         //create match
         std::string players = "";
@@ -62,18 +66,20 @@ void Tournament::createGame()
                 match.push_back("-\t");
             }
         }
-        
+
         //shuffle
         for(int j = 0; j < nplayers; j++)
         {
             int r = j + std::rand() % (nplayers - j);
             std::swap(match[j], match[r]);
         }
+        
         //publish match
         for(int j = 0; j < nplayers; j++)
         {
             players += match[j];
         }
+        match.clear();
         game.push_back(players);
     } 
 
